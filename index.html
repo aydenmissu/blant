@@ -36,6 +36,8 @@
                     <button class="tab-btn" id="featuresTabBtn">Features</button>
                     <button class="tab-btn" id="pricingTabBtn">Pricing</button>
                     <button class="tab-btn" id="reviewsTabBtn">Reviews</button>
+                    <button class="tab-btn" id="checkoutTabBtn">Checkout</button>
+                    <button class="tab-btn" id="downloadTabBtn">Download</button>
                 </nav>
             </header>
             
@@ -56,7 +58,7 @@
                     </div>
                     <div class="overview-image">
                         <!-- Replace src with your own screenshot if available -->
-                        <img src="https://media.discordapp.net/attachments/1353627610684461128/1387312266319237160/image.png?ex=685ce2bb&is=685b913b&hm=f07d7e33c50199766b066cc0c1136b0a319e307cb8ed940e7e4ffec7fe8fedf6&=&format=webp&quality=lossless" alt="Cheat Screenshot" style="max-width:350px; border-radius:18px; box-shadow:0 8px 32px rgba(0,0,0,0.25);">
+                        <img src="https://media.discordapp.net/attachments/1353627610684461128/1387312266319237160/image.png?ex=685ce2bb&is=685b913b&hm=f07d7e33c50199766b066cc0c1136b0a319e307cb8ed940e7e4ffec7fe8fedf6&=&format=webp&quality=lossless" alt="Cheat Screenshot" class="image-3d">
                     </div>
                 </section>
             </div>
@@ -185,13 +187,59 @@
                 </div>
             </div>
 
+            <!-- Checkout Tab -->
+            <div class="checkout-section tab-content" id="checkoutTab" style="display:none;">
+                <h2>Checkout</h2>
+                <div class="checkout-card">
+                    <div class="checkout-summary">
+                        <div class="checkout-product">
+                            <span class="checkout-product-title">External Lifetime</span>
+                            <span class="checkout-product-price">$60</span>
+                        </div>
+                    </div>
+                    <div class="checkout-methods">
+                        <button class="checkout-method google-pay"><i class="fab fa-google-pay"></i> </button>
+                        <button class="checkout-method apple-pay"><i class="fab fa-apple-pay"></i> </button>
+                        <button class="checkout-method credit-card"><i class="fas fa-credit-card"></i> </button>
+                    </div>
+                    <form class="checkout-form">
+                        <input type="text" placeholder="Cardholder Name" required>
+                        <input type="text" placeholder="Card Number" maxlength="19" required>
+                        <input type="text" placeholder="MM/YY" maxlength="5" required>
+                        <input type="text" placeholder="CVC" maxlength="4" required>
+                        <button type="submit" class="cta-button primary large">Pay Now</button>
+                    </form>
+                    <div class="checkout-success" style="display:none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Payment Successful! (Fake)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Tab -->
+            <div class="download-section tab-content" id="downloadTab" style="display:none;">
+                <h2>Download Loader</h2>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <p class="download-desc">Get the latest version of the blant.ex external loader. Make sure you have purchased access before running the loader.</p>
+                    <a href="loader.zip" class="cta-button primary large" download>
+                        <i class="fas fa-arrow-down"></i> Download Loader
+                    </a>
+                    <div class="download-note">Need help? <a href="#" class="footer-link">Join our Discord</a></div>
+                </div>
+            </div>
+
             <!-- Call to Action -->
-            <div class="cta-section">
-                <h2>Ready to Dominate?</h2>
-                <p>Join thousands of players who have enhanced their gaming experience with our tools.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="cta-button primary large">Get Started Now</a>
-                    <a href="#" class="cta-button secondary large">Join Discord</a>
+            <div class="cta-section-wrapper" id="ctaSectionWrapper">
+                <div class="cta-section">
+                    <h2>Ready to Dominate?</h2>
+                    <p>Join thousands of players who have enhanced their gaming experience with our tools.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button primary large">Get Started Now</a>
+                        <a href="#" class="cta-button secondary large">Join Discord</a>
+                    </div>
                 </div>
             </div>
         </main>
@@ -199,7 +247,7 @@
             <div class="footer-content">
                 <span class="footer-brand">blant.ex</span>
                 <span class="footer-divider">|</span>
-                <span class="footer-copyright">&copy; 2024 blant.ex. All rights reserved.</span>
+                <span class="footer-copyright">&copy; 2025 blant.ex. All rights reserved.</span>
                 <a href="#" class="footer-link"><i class="fab fa-discord"></i> Discord</a>
             </div>
         </footer>
