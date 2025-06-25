@@ -293,20 +293,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const featuresTab = document.getElementById('featuresTab');
     const pricingTab = document.getElementById('pricingTab');
     const reviewsTab = document.getElementById('reviewsTab');
+    const checkoutTabBtn = document.getElementById('checkoutTabBtn');
+    const checkoutTab = document.getElementById('checkoutTab');
+    const ctaSectionWrapper = document.getElementById('ctaSectionWrapper');
+    const downloadTabBtn = document.getElementById('downloadTabBtn');
+    const downloadTab = document.getElementById('downloadTab');
 
     function showTab(tab) {
         overviewTab.style.display = 'none';
         featuresTab.style.display = 'none';
         pricingTab.style.display = 'none';
         reviewsTab.style.display = 'none';
+        if (checkoutTab) checkoutTab.style.display = 'none';
+        if (downloadTab) downloadTab.style.display = 'none';
         overviewTab.classList.remove('active');
         featuresTab.classList.remove('active');
         pricingTab.classList.remove('active');
         reviewsTab.classList.remove('active');
+        if (checkoutTab) checkoutTab.classList.remove('active');
+        if (downloadTab) downloadTab.classList.remove('active');
         overviewTabBtn.classList.remove('active');
         featuresTabBtn.classList.remove('active');
         pricingTabBtn.classList.remove('active');
         reviewsTabBtn.classList.remove('active');
+        if (checkoutTabBtn) checkoutTabBtn.classList.remove('active');
+        if (downloadTabBtn) downloadTabBtn.classList.remove('active');
+        if (ctaSectionWrapper) ctaSectionWrapper.style.display = '';
         if (tab === 'overview') {
             overviewTab.style.display = '';
             overviewTab.classList.add('active');
@@ -323,12 +335,28 @@ document.addEventListener('DOMContentLoaded', function() {
             reviewsTab.style.display = '';
             reviewsTab.classList.add('active');
             reviewsTabBtn.classList.add('active');
+        } else if (tab === 'checkout') {
+            if (checkoutTab) {
+                checkoutTab.style.display = '';
+                checkoutTab.classList.add('active');
+                checkoutTabBtn.classList.add('active');
+            }
+            if (ctaSectionWrapper) ctaSectionWrapper.style.display = 'none';
+        } else if (tab === 'download') {
+            if (downloadTab) {
+                downloadTab.style.display = '';
+                downloadTab.classList.add('active');
+                downloadTabBtn.classList.add('active');
+            }
+            if (ctaSectionWrapper) ctaSectionWrapper.style.display = 'none';
         }
     }
     overviewTabBtn.addEventListener('click', function() { showTab('overview'); });
     featuresTabBtn.addEventListener('click', function() { showTab('features'); });
     pricingTabBtn.addEventListener('click', function() { showTab('pricing'); });
     reviewsTabBtn.addEventListener('click', function() { showTab('reviews'); });
+    if (checkoutTabBtn) checkoutTabBtn.addEventListener('click', function() { showTab('checkout'); });
+    if (downloadTabBtn) downloadTabBtn.addEventListener('click', function() { showTab('download'); });
     
     // Show the overview tab by default
     showTab('overview');
@@ -366,6 +394,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1400);
     }
     setInterval(createShootingStar, 1200);
+
+    // Fake checkout logic
+    const checkoutForm = document.querySelector('.checkout-form');
+    const checkoutSuccess = document.querySelector('.checkout-success');
+    if (checkoutForm && checkoutSuccess) {
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            checkoutForm.style.display = 'none';
+            checkoutSuccess.style.display = 'flex';
+        });
+    }
+    // Payment method highlight
+    const methodBtns = document.querySelectorAll('.checkout-method');
+    methodBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            methodBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
 });
 
 // Add console message for developers
