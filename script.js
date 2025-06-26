@@ -413,6 +413,56 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.classList.add('active');
         });
     });
+
+    // Footer Modal Logic
+    function closeModalWithAnimation(modal) {
+        if (!modal.classList.contains('active')) return;
+        modal.classList.add('closing');
+        setTimeout(() => {
+            modal.classList.remove('active', 'closing');
+        }, 350); // Match CSS animation duration
+    }
+    function setupFooterModals() {
+        const modals = {
+            about: document.getElementById('aboutModal'),
+            faq: document.getElementById('faqModal'),
+            disclaimer: document.getElementById('disclaimerModal')
+        };
+        const links = {
+            about: document.getElementById('aboutLink'),
+            faq: document.getElementById('faqLink'),
+            disclaimer: document.getElementById('disclaimerLink')
+        };
+        Object.keys(links).forEach(key => {
+            if (links[key]) {
+                links[key].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modals[key].classList.add('active');
+                    modals[key].classList.remove('closing');
+                });
+            }
+        });
+        document.querySelectorAll('.footer-modal').forEach(modal => {
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModalWithAnimation(modal);
+            });
+            // Close on close button
+            const closeBtn = modal.querySelector('.footer-modal-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    closeModalWithAnimation(modal);
+                });
+            }
+        });
+        // Optional: Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                Object.values(modals).forEach(m => closeModalWithAnimation(m));
+            }
+        });
+    }
+    window.addEventListener('DOMContentLoaded', setupFooterModals);
 });
 
 // Add console message for developers
